@@ -1,0 +1,14 @@
+title: NINA analysis template
+author: Jens Åström
+version: 0.0.1
+contributes:
+  formats: 
+    pdf:
+      include-in-header: 
+       - "pdf/nina_analysis_header.tex"
+      include-before-body:
+       - "pdf/nina_analysis_pagestyle.tex"
+      toc: false
+      code-block-bg: grey
+      linkcolor: orange
+      urlcolor: orange

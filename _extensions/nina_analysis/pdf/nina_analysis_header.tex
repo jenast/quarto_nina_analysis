@@ -1,0 +1,95 @@
+% load packages
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{fontspec}
+\usepackage{titlesec}
+
+%% Set page size with a wider right margin
+\geometry{a4paper, total={170mm,257mm}, left=20mm, top=20mm, bottom=20mm, right=50mm}
+
+%% Let's define some colours
+\definecolor{darkblue}{HTML}{004F71}
+\definecolor{blue}{HTML}{008C95}
+\definecolor{orange}{HTML}{E57200}
+\definecolor{purple}{HTML}{93328E}
+\definecolor{green}{HTML}{7A9A01}
+\definecolor{grey}{HTML}{A2AAAD}
+\definecolor{lightblue}{HTML}{2DCCD3}
+\definecolor{yellow}{HTML}{FFB25B}
+
+% Let's add the border on the right hand side
+\AddToShipoutPicture{%
+     \AtPageLowerLeft{%
+         \put(\LenToUnit{\dimexpr\paperwidth-3cm},\LenToUnit{0cm}){%
+             \color{darkblue}\rule{3cm}{\paperheight}%
+           }%
+      }%
+     % logo
+    \AtPageLowerLeft{% start the bar at the bottom right of the page
+        \put(\LenToUnit{\dimexpr\paperwidth-2.8cm},\LenToUnit{27.2cm}){% move it to the top right
+            \includegraphics[width=2.5cm]{_extensions/nina_analysis/logo.png}
+          }%
+     }%
+     
+     \AddToShipoutPicture{
+  \AtPageLowerLeft{% start the bar at the bottom right of the page
+    \put(\LenToUnit{\dimexpr\paperwidth-2.8cm},\LenToUnit{5cm}){% move it to the top right
+         \color{grey}\small{$author$}
+      }%
+ }%
+ }
+
+
+}
+
+
+%% Style the page number
+\fancypagestyle{mystyle}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0pt}
+  \fancyfoot[R]{\thepage}
+  \fancyfootoffset{3.5cm}
+}
+\setlength{\footskip}{20pt}
+
+%% style the chapter/section fonts
+\chapterfont{\color{darkblue}\fontsize{20}{16.8}\selectfont} %Doesn't work in early pandoc versions
+\sectionfont{\color{darkblue}\fontsize{20}{16.8}\selectfont}
+\subsectionfont{\color{orange}\fontsize{14}{16.8}\selectfont} %Doesn't work in early pandoc versions
+\titleformat{\subsection}
+  {\sffamily\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+% left align title
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  {\sffamily\huge\textbf{\MakeUppercase{\@title}}} \vspace{0.3cm} \newline
+  {\Large {\@subtitle}} \newline
+  \@author
+\end{flushleft}\egroup
+}
+\makeatother
+
+%% Use some custom fonts
+\setsansfont{NotoSans}[
+    Path=_extensions/nina_analysis/noto/static/,
+    Scale=0.9,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    ]
+
+\setmainfont{NotoSans}[
+    Path=_extensions/nina_analysis/noto/static/,
+    Scale=0.9,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    ]
+    
+
