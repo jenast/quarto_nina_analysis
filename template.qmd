@@ -5,6 +5,22 @@ author: Jens Åström
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 ---
 
+```{r}
+#| echo: false
+suppressPackageStartupMessages({
+  require(ggplot2)
+  require(dplyr)
+  require(NinaR)
+})
+
+knitr::opts_chunk$set(tidy = "styler")
+
+ggplot2::theme_set(ggthemes::theme_few())
+
+```
+
+
+
 # Header 1
 
 ## Header 2
@@ -16,18 +32,64 @@ Quarto enables you to weave together content and executable code into a finished
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
-1 + 1
+#| results: hide
+my_result_1 <- 1 + 1
 ```
 
 You can add options to executable code like this
 
 ```{r}
 #| echo: false
-2 * 2
+my_result_2 <- 2 * 2
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+The `echo: false` option disables the printing of code (only output is displayed), but you can still access the values like this: `r my_result_2`.
+
+## NINA - figures
+You can use the package `NinaR` to access the official nina colors.
+
+```{r}
+#| label: fig-barplot
+#| echo: false
+#| fig-cap: Ett exempel med NINAs fargepalett generert fra R.
+#| fig-pos: 'h!'
+
+
+plot.mat <- matrix(rnorm(25, 40, sd=10), 
+                   ncol=5, 
+                   dimnames = list(c("Sportsfisker", "Elveeier", 
+                                     "Oppleid", "Fisket", "Poseidon"), 
+                                   c("Lakselus", "Utsetting", 
+                                     "Strengere restriksjoner", 
+                                     "Fysiske tiltak", "Flaks")))
+
+plot.mat <- tibble::tibble(Verdi = rnorm(n = 25, 
+                                 mean = 40, 
+                                 sd = 10),
+                   Prøvetyper = rep(c("Type_1",
+                                  "Type_2",
+                                  "Type_3",
+                                  "Type_4",
+                                  "Type_5"),
+                                  each = 5),
+                   Kategori = rep(c("Lengde",
+                                     "Høyde",
+                                     "Dybde",
+                                     "Vekt",
+                                     "Kvalitet"),
+                                   times = 5)
+)
+
+ggplot(plot.mat) +
+  geom_bar(aes(x = Verdi, y = Prøvetyper, fill = Kategori),
+           stat = "identity",
+           position = 'dodge') +
+  NinaR::scale_fill_nina() 
+
+```
 
 \clearpage
 
 # New pages can be forced by adding a `clearpage` command
+
+

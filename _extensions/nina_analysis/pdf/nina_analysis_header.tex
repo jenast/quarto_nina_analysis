@@ -13,34 +13,35 @@
 %% Let's define some colours
 \definecolor{darkblue}{HTML}{004F71}
 \definecolor{blue}{HTML}{008C95}
+\definecolor{greyblue}{HTML}{425563}
 \definecolor{orange}{HTML}{E57200}
 \definecolor{purple}{HTML}{93328E}
 \definecolor{green}{HTML}{7A9A01}
 \definecolor{grey}{HTML}{A2AAAD}
 \definecolor{lightblue}{HTML}{2DCCD3}
 \definecolor{yellow}{HTML}{FFB25B}
+\colorlet{lightgrey}{White!70!grey}
 
 % Let's add the border on the right hand side
 \AddToShipoutPicture{%
      \AtPageLowerLeft{%
          \put(\LenToUnit{\dimexpr\paperwidth-3cm},\LenToUnit{0cm}){%
-             \color{darkblue}\rule{3cm}{\paperheight}%
+             \color{greyblue}\rule{3cm}{\paperheight}%
            }%
       }%
      % logo
     \AtPageLowerLeft{% start the bar at the bottom right of the page
         \put(\LenToUnit{\dimexpr\paperwidth-2.8cm},\LenToUnit{27.2cm}){% move it to the top right
-            \includegraphics[width=2.5cm]{_extensions/nina_analysis/logo.png}
+            \includegraphics[width=2cm]{_extensions/nina_analysis/logo.png}
           }%
      }%
-     
-     \AddToShipoutPicture{
-  \AtPageLowerLeft{% start the bar at the bottom right of the page
-    \put(\LenToUnit{\dimexpr\paperwidth-2.8cm},\LenToUnit{5cm}){% move it to the top right
-         \color{grey}\small{$author$}
-      }%
- }%
- }
+  
+ %%This doesn't work, can't manage to call author variable       
+ %  \AtPageLowerLeft{% start the bar at the bottom right of the page
+ %    \put(\LenToUnit{\dimexpr\paperwidth-2.8cm},\LenToUnit{3cm}){% move it to the top right
+ %         \color{grey}\small{\author}
+ %      }%
+ % }%
 
 
 }
@@ -68,7 +69,8 @@
 \begin{flushleft}
   {\sffamily\huge\textbf{\MakeUppercase{\@title}}} \vspace{0.3cm} \newline
   {\Large {\@subtitle}} \newline
-  \@author
+  \@author \hspace{0.2cm} \@date
+
 \end{flushleft}\egroup
 }
 \makeatother

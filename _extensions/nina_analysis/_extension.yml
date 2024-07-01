@@ -9,6 +9,6 @@ contributes:
       include-before-body:
        - "pdf/nina_analysis_pagestyle.tex"
       toc: false
-      code-block-bg: grey
+      code-block-bg: lightgrey
       linkcolor: orange
       urlcolor: orange
