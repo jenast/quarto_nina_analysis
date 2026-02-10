@@ -57,11 +57,30 @@
 \setlength{\footskip}{20pt}
 
 %% style the chapter/section fonts
-\chapterfont{\color{darkblue}\fontsize{20}{16.8}\selectfont} %Doesn't work in early pandoc versions
-\sectionfont{\color{darkblue}\fontsize{20}{16.8}\selectfont}
-\subsectionfont{\color{orange}\fontsize{14}{16.8}\selectfont} %Doesn't work in early pandoc versions
+% 1. Style Section (#) - Replaces your Chapter styling
+\titleformat{\section}
+  {\normalfont\huge\bfseries\color{darkblue}} % Format
+  {\thesection}                               % Label
+  {1em}                                       % Sep
+  {}                                          % Before-code
+  %[{\titlerule[1.5pt]}]                       % After-code (Thicker line)
+
+% 2. Style Subsection (##)
 \titleformat{\subsection}
-  {\sffamily\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  {\normalfont\fontsize{20}{24}\selectfont\bfseries\color{darkblue}}
+  {\thesubsection}
+  {1em}
+  {}
+  [{\titlerule[0.8pt]}]                       % After-code (Standard line)
+
+% 3. Style Subsubsection (###)
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{14}{16.8}\selectfont\bfseries\color{orange}}
+  {\thesubsubsection}
+  {1em}
+  {}
+  [{\titlerule[0.5pt]}]                       % After-code (Thin line)
+  
   
 % left align title
 \makeatletter

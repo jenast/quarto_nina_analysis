@@ -19,15 +19,15 @@ ggplot2::theme_set(ggthemes::theme_few())
 
 ```
 
-
-
 # Header 1
+
+This is not an official NINA product meant for publication. It is just an informal quarto analysis template that conforms somewhat to the NINA graphical profile.
 
 ## Header 2
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-## Running Code
+### Header 3
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
@@ -44,6 +44,11 @@ my_result_2 <- 2 * 2
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed), but you can still access the values like this: `r my_result_2`.
+
+
+New pages can be forced by adding a `clearpage` command.
+
+\clearpage
 
 ## NINA - figures
 You can use the package `NinaR` to access the official nina colors.
@@ -87,9 +92,3 @@ ggplot(plot.mat) +
   NinaR::scale_fill_nina() 
 
 ```
-
-\clearpage
-
-# New pages can be forced by adding a `clearpage` command
-
-
